@@ -1,6 +1,8 @@
 import scapy.all as scp
 import threading
 
+#sudo .venv/bin/python network_scanner.py -t 10.0.2.1/24
+
 pkt_list = []  # this holds actual packet object
 
 # get interface names
