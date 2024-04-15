@@ -1,7 +1,9 @@
 import scapy.all as scp
 import threading
+from datetime import datetime
 
-#sudo .venv/bin/python network_scanner.py -t 10.0.2.1/24
+
+#sudo .venv/bin/python network_scanner.py 
 
 pkt_list = []  # this holds actual packet object
 
@@ -13,7 +15,10 @@ def pkt_process(pkt):
     global pkt_list
 
     pkt_list.append(pkt)  # add actual packet object to pkt_list
-    print(pkt.summary())  # print packet summary to console
+    #print(pkt.summary())  # print packet summary to console
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3] # Get current timestamp
+    print(f"[{timestamp}] {pkt.summary()}")
+
 
 # start packet capture
 sniffthread = threading.Thread(target=scp.sniff, kwargs={"prn": pkt_process, "filter": "", "iface": ifaces[0:7]}, daemon=True)
