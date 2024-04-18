@@ -1,6 +1,8 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
+from dashboard import Dashboard
+
 
 class Login(QDialog):
     def __init__(self, widget):
@@ -16,7 +18,7 @@ class Login(QDialog):
     
         # Handle authentication
         if email == "admin" and password == "admin":
-            print("success login")
+            self.show_dashboard()
         else:
             self.show_alert()
             
@@ -24,6 +26,10 @@ class Login(QDialog):
     def show_alert(self):
         QMessageBox.information(self, 'Alert', 'Invalid username or password!', QMessageBox.Ok)
 
-
+    def show_dashboard(self):
+        dashboard = Dashboard()
+        self.widget.addWidget(dashboard)
+        self.widget.setCurrentIndex(self.widget.currentIndex() + 1)
+        
 
     
