@@ -2,17 +2,11 @@ import scapy.all as scp
 import threading
 from datetime import datetime
 from PyQt5.QtWidgets import QTableWidgetItem
+from scapy.layers.inet import IP, TCP, UDP
 
 
 class PacketSniffer:
-    # def __init__(self, iface, filter="", timeout=30):
-    #     self.iface = iface
-    #     self.filter = filter
-    #     self.timeout = timeout
-    #     self.pkt_list = []
-    #     self.sniff_thread = None
-    #     self.capture_running = False  # Flag to indicate if capture is running
-    
+ 
     def __init__(self, iface, tableWidget, filter="", timeout=30):
         self.iface = iface
         self.filter = filter
@@ -21,7 +15,7 @@ class PacketSniffer:
         self.sniff_thread = None
         self.capture_running = False  # Flag to indicate if capture is running
         self.tableWidget = tableWidget  # Reference to the tableWidget
- 
+
     def pkt_process(self, pkt):
         if self.capture_running:
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
@@ -33,11 +27,37 @@ class PacketSniffer:
             row_position = self.tableWidget.rowCount()
             self.tableWidget.insertRow(row_position)
             self.tableWidget.setItem(row_position, 0, QTableWidgetItem(timestamp))
-            self.tableWidget.setItem(row_position, 1, QTableWidgetItem(pkt.proto))
-            self.tableWidget.setItem(row_position, 2, QTableWidgetItem(pkt.src))
-            self.tableWidget.setItem(row_position, 3, QTableWidgetItem(pkt.dst))
-            self.tableWidget.setItem(row_position, 4, QTableWidgetItem(str(len(pkt))))
-            self.tableWidget.setItem(row_position, 5, QTableWidgetItem(pkt.flags))
+        
+            if IP in pkt:  # Check if the packet is an IP packet
+                self.tableWidget.setItem(row_position, 1, QTableWidgetItem("IP"))
+                self.tableWidget.setItem(row_position, 2, QTableWidgetItem(pkt[IP].src))
+                self.tableWidget.setItem(row_position, 3, QTableWidgetItem(pkt[IP].dst))
+                self.tableWidget.setItem(row_position, 4, QTableWidgetItem(str(len(pkt))))
+                # No flags for IP packets, set an empty string for the flags column
+                self.tableWidget.setItem(row_position, 5, QTableWidgetItem(""))
+            else:
+                # If the packet is not an IP packet, display the protocol and MAC addresses
+                self.tableWidget.setItem(row_position, 1, QTableWidgetItem(pkt.proto))
+                self.tableWidget.setItem(row_position, 2, QTableWidgetItem(pkt.src))
+                self.tableWidget.setItem(row_position, 3, QTableWidgetItem(pkt.dst))
+                self.tableWidget.setItem(row_position, 4, QTableWidgetItem(str(len(pkt))))
+                self.tableWidget.setItem(row_position, 5, QTableWidgetItem(pkt.flags))
+    
+    def get_port_number(self, src_ip, dst_ip, pkt):
+        src_port = None
+        dst_port = None
+
+        if IP in pkt and pkt[IP].src == src_ip and pkt[IP].dst == dst_ip:
+            if TCP in pkt:
+                src_port = pkt[TCP].sport
+                dst_port = pkt[TCP].dport
+            elif UDP in pkt:
+                src_port = pkt[UDP].sport
+                dst_port = pkt[UDP].dport
+
+        # Return the extracted port numbers
+        return src_port, dst_port
+
 
     def start_capture(self):
         self.capture_running = True  # Set flag to indicate capture is running
