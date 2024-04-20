@@ -36,13 +36,16 @@ class PacketSniffer:
                 # No flags for IP packets, set an empty string for the flags column
                 self.tableWidget.setItem(row_position, 5, QTableWidgetItem(""))
             else:
-                # If the packet is not an IP packet, display the protocol and MAC addresses
-                self.tableWidget.setItem(row_position, 1, QTableWidgetItem(pkt.proto))
+                # If the packet is not an IP packet, handle it accordingly
+                protocol = "TCP" if TCP in pkt else ("UDP" if UDP in pkt else "Other")
+                self.tableWidget.setItem(row_position, 1, QTableWidgetItem(protocol))
                 self.tableWidget.setItem(row_position, 2, QTableWidgetItem(pkt.src))
                 self.tableWidget.setItem(row_position, 3, QTableWidgetItem(pkt.dst))
                 self.tableWidget.setItem(row_position, 4, QTableWidgetItem(str(len(pkt))))
-                self.tableWidget.setItem(row_position, 5, QTableWidgetItem(pkt.flags))
-    
+                #self.tableWidget.setItem(row_position, 5, QTableWidgetItem(pkt.flags) if TCP in pkt else QTableWidgetItem(""))
+                self.tableWidget.setItem(row_position, 5, QTableWidgetItem(""))
+
+
     def get_port_number(self, src_ip, dst_ip, pkt):
         src_port = None
         dst_port = None

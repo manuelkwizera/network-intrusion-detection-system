@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 from packet_sniffer import PacketSniffer
 import scapy.all as scp
+from ip_geolocator import IPGeolocator
 
 class Dashboard(QDialog):
     def __init__(self):
@@ -12,6 +13,7 @@ class Dashboard(QDialog):
         self.stopsniff.clicked.connect(self.stop_sniff)
         self.clear_table_button.clicked.connect(self.clear_packet_table)
         self.sniffer = None  # Initialize sniffer as None
+        self.get_ip_info_button.clicked.connect(self.get_ip_geolocator)
 
     #start packet sniffing
     def start_sniff(self):
@@ -31,3 +33,9 @@ class Dashboard(QDialog):
     def clear_packet_table(self):
         self.tableWidget.clearContents()
         self.tableWidget.setRowCount(0)
+
+    def get_ip_geolocator(self):
+        ip_geolocator = IPGeolocator(self)
+        ip_geolocator.get_ip_info()
+
+        

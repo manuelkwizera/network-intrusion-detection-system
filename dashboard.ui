@@ -236,7 +236,7 @@
      <string>TRACK IP LOCATION</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="loginbutton_2">
+   <widget class="QPushButton" name="get_ip_info_button">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -252,7 +252,7 @@
      <string>SCAN</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="email_2">
+   <widget class="QLineEdit" name="ip_address_input">
     <property name="geometry">
      <rect>
       <x>90</x>
