@@ -8,7 +8,7 @@ from ip_geolocator import IPGeolocator
 class Dashboard(QDialog):
     def __init__(self):
         super(Dashboard, self).__init__()
-        loadUi("dashboard.ui", self)
+        loadUi("view/dashboard.ui", self)
         self.startsniff.clicked.connect(self.start_sniff)
         self.stopsniff.clicked.connect(self.stop_sniff)
         self.clear_table_button.clicked.connect(self.clear_packet_table)

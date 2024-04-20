@@ -7,7 +7,7 @@ from dashboard import Dashboard
 class Login(QDialog):
     def __init__(self, widget):
         super(Login, self).__init__()
-        loadUi("login.ui", self)
+        loadUi("view/login.ui", self)
         self.widget = widget
         self.loginbutton.clicked.connect(self.handle_authentication)
         self.password.setEchoMode(QtWidgets.QLineEdit.Password)
