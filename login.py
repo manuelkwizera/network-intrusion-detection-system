@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.uic import loadUi
 from dashboard import Dashboard
+from database_connector import DatabaseConnector
 
 
 class Login(QDialog):
@@ -11,13 +12,14 @@ class Login(QDialog):
         self.widget = widget
         self.loginbutton.clicked.connect(self.handle_authentication)
         self.password.setEchoMode(QtWidgets.QLineEdit.Password)
-    
+        self.database_connector = DatabaseConnector()
+      
     def handle_authentication(self):
-        email = self.username.text()
+        username = self.username.text()
         password = self.password.text()
     
-        # Handle authentication
-        if email == "admin" and password == "admin":
+        # Authenticate user
+        if self.database_connector.authenticate(username, password):
             self.show_dashboard()
         else:
             self.show_alert()

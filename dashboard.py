@@ -14,6 +14,7 @@ class Dashboard(QDialog):
         self.clear_table_button.clicked.connect(self.clear_packet_table)
         self.sniffer = None  # Initialize sniffer as None
         self.get_ip_info_button.clicked.connect(self.get_ip_geolocator)
+        self.network_scanner_button.clicked.connect()
 
     #start packet sniffing
     def start_sniff(self):

@@ -1,7 +1,9 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QStackedWidget
 from login import Login
-
+"""
+sudo .venv/bin/python main.py
+"""
 
 def main():
     app = QApplication(sys.argv)

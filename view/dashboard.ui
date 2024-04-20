@@ -79,7 +79,7 @@
     <string>STOP </string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="network_scanner_button">
    <property name="geometry">
     <rect>
      <x>450</x>
