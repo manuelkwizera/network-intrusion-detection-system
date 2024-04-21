@@ -1,10 +1,13 @@
 from scapy.all import ARP, Ether, srp
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QDialog
+from PyQt5.uic import loadUi
 
-class NetworkScanner():
-    def __init__(self, target_ip, connections_table):
-        #target_ip = "192.168.150.1/24"
+class NetworkScanner(QDialog):
+    def __init__(self, target_ip):
+        super(NetworkScanner, self).__init__()
+        loadUi("view/connections.ui", self)
         self.target_ip = target_ip
-        self.connections_table = connections_table
         self.clients = []
         self.result = []
     
@@ -12,7 +15,6 @@ class NetworkScanner():
         # IP Address for the destination
         # create ARP packet
         arp = ARP(pdst = self.target_ip) 
-        
         # create the Ether broadcast packet
         # ff:ff:ff:ff:ff:ff MAC address indicates broadcasting
         ether = Ether(dst="ff:ff:ff:ff:ff:ff")

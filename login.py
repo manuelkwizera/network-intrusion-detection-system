@@ -29,7 +29,7 @@ class Login(QDialog):
         QMessageBox.information(self, 'Alert', 'Invalid username or password!', QMessageBox.Ok)
 
     def show_dashboard(self):
-        dashboard = Dashboard()
+        dashboard = Dashboard(self.widget)
         self.widget.addWidget(dashboard)
         self.widget.setCurrentIndex(self.widget.currentIndex() + 1)
         

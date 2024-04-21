@@ -4,17 +4,19 @@ from PyQt5.uic import loadUi
 from packet_sniffer import PacketSniffer
 import scapy.all as scp
 from ip_geolocator import IPGeolocator
+from network_scanner import NetworkScanner
 
 class Dashboard(QDialog):
-    def __init__(self):
+    def __init__(self, widget):
         super(Dashboard, self).__init__()
         loadUi("view/dashboard.ui", self)
+        self.widget = widget
         self.startsniff.clicked.connect(self.start_sniff)
         self.stopsniff.clicked.connect(self.stop_sniff)
         self.clear_table_button.clicked.connect(self.clear_packet_table)
         self.sniffer = None  # Initialize sniffer as None
         self.get_ip_info_button.clicked.connect(self.get_ip_geolocator)
-        self.network_scanner_button.clicked.connect()
+        self.network_scanner_button.clicked.connect(self.show_network_scanner)
 
     #start packet sniffing
     def start_sniff(self):
@@ -36,7 +38,14 @@ class Dashboard(QDialog):
         self.tableWidget.setRowCount(0)
 
     def get_ip_geolocator(self):
-        ip_geolocator = IPGeolocator(self)
+        ip_geolocator = IPGeolocator(self.widget)
         ip_geolocator.get_ip_info()
+        
+    def show_network_scanner(self):
+        target_ip = "192.168.150.1/24"
+        network_scanner = NetworkScanner(target_ip)
+        self.widget.addWidget(network_scanner)
+        self.widget.setCurrentIndex(self.widget.currentIndex() + 1)
+        
 
         
