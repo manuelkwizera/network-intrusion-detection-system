@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QTableWidgetItem
 from PyQt5.QtWidgets import QPushButton, QHBoxLayout, QWidget, QDialog, QSpacerItem
+from port_scanner import PortScanner
 
 class NetworkScanner(QDialog):
     def __init__(self, target_ip, widget, dashboard):
@@ -28,6 +29,9 @@ class NetworkScanner(QDialog):
         
         #clear table widget
         self.clear_san_table_button.clicked.connect(self.clear_table)
+        
+        #detect when scan button is cliecked
+        self.port_scan_button.clicked.connect(self.scan_ports)
     
     """
     scan for available devices in the network
@@ -84,3 +88,7 @@ class NetworkScanner(QDialog):
         self.clients.clear()
         self.tableWidget.clearContents()
         self.tableWidget.setRowCount(0)
+    
+    def scan_ports(self):
+        port_scanner = PortScanner(self)
+        port_scanner.run_port_scan()

@@ -22,7 +22,7 @@ class Dashboard(QDialog):
     def start_sniff(self):
         ifaces = [iface for iface in scp.conf.ifaces]
         #self.sniffer = PacketSniffer(ifaces[0:7])
-        self.sniffer = PacketSniffer(ifaces[0:7], self.tableWidget)  # Pass tableWidget reference
+        self.sniffer = PacketSniffer(ifaces[0:7], self.tableWidget, self)  # Pass tableWidget reference
         self.sniffer.start_capture()
     
     #stop packet sniffing

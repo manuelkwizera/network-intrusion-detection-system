@@ -67,87 +67,13 @@
     </property>
    </column>
   </widget>
-  <widget class="QFrame" name="frame_2">
+  <widget class="QFrame" name="frame_3">
    <property name="geometry">
     <rect>
      <x>650</x>
      <y>70</y>
      <width>331</width>
-     <height>151</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>261</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 15pt;</string>
-    </property>
-    <property name="text">
-     <string>TRACK IP LOCATION</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="get_ip_info_button">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>100</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>SCAN</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="ip_address_input">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>60</y>
-      <width>231</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>71</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 12pt;</string>
-    </property>
-    <property name="text">
-     <string>IP:</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QFrame" name="frame_3">
-   <property name="geometry">
-    <rect>
-     <x>650</x>
-     <y>288</y>
-     <width>331</width>
-     <height>151</height>
+     <height>144</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -172,7 +98,7 @@
      <string>SCAN PORTS</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="get_ip_info_button_2">
+   <widget class="QPushButton" name="port_scan_button">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -188,7 +114,7 @@
      <string>SCAN</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="ip_address_input_2">
+   <widget class="QLineEdit" name="ip_address_input">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -285,6 +211,49 @@
    <property name="text">
     <string>CLEAR TABLE</string>
    </property>
+  </widget>
+  <widget class="QTableWidget" name="port_scan_table">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>250</y>
+     <width>331</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>IP ADDRESS</string>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>PORT NO</string>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>STATUS</string>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources/>

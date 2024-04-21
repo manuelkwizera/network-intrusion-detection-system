@@ -1,13 +1,14 @@
 import scapy.all as scp
 import threading
 from datetime import datetime
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 from scapy.layers.inet import IP, TCP, UDP
 
 
 class PacketSniffer:
  
-    def __init__(self, iface, tableWidget, filter="", timeout=30):
+    def __init__(self, iface, tableWidget, parent=None, filter="", timeout=30):
+        self.parent = parent
         self.iface = iface
         self.filter = filter
         self.timeout = timeout
@@ -71,6 +72,7 @@ class PacketSniffer:
         try:
             scp.sniff(prn=self.pkt_process, filter=self.filter, iface=self.iface, timeout=self.timeout)
         except Exception as e:
+            QMessageBox.information(self.parent, 'Alert', 'An error occurred during packet capture!', QMessageBox.Ok)
             print("An error occurred during packet capture:", e)
         finally:
             self.capture_running = False  # Reset flag when capture stops
@@ -79,8 +81,10 @@ class PacketSniffer:
         if self.sniff_thread and self.capture_running:
             self.capture_running = False  # Set flag to stop packet capture
             self.sniff_thread.join()  # Wait for thread to stop
+            QMessageBox.information(self.parent, 'Alert', 'Packet sniffing stopped successfully!', QMessageBox.Ok)
             print("Capture stopped successfully")
         else:
+            QMessageBox.information(self.parent, 'Alert', 'No capture running!', QMessageBox.Ok)
             print("No capture running")
 
     def get_packet_count(self):
