@@ -43,7 +43,8 @@ class Dashboard(QDialog):
         
     def show_network_scanner(self):
         target_ip = "192.168.150.1/24"
-        network_scanner = NetworkScanner(target_ip)
+        dashboard = Dashboard(self.widget)
+        network_scanner = NetworkScanner(target_ip, self.widget, dashboard)
         self.widget.addWidget(network_scanner)
         self.widget.setCurrentIndex(self.widget.currentIndex() + 1)
         

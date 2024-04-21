@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
-     <width>601</width>
-     <height>581</height>
+     <y>70</y>
+     <width>631</width>
+     <height>521</height>
     </rect>
    </property>
    <column>
@@ -71,7 +71,7 @@
    <property name="geometry">
     <rect>
      <x>650</x>
-     <y>10</y>
+     <y>70</y>
      <width>331</width>
      <height>151</height>
     </rect>
@@ -145,7 +145,7 @@
    <property name="geometry">
     <rect>
      <x>650</x>
-     <y>210</y>
+     <y>288</y>
      <width>331</width>
      <height>151</height>
     </rect>
@@ -215,7 +215,7 @@
     </property>
    </widget>
   </widget>
-  <widget class="QPushButton" name="get_ip_info_button_3">
+  <widget class="QPushButton" name="got_to_dashboard_button">
    <property name="geometry">
     <rect>
      <x>830</x>
@@ -234,9 +234,9 @@
   <widget class="QPushButton" name="get_ip_info_button_4">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>650</x>
      <y>560</y>
-     <width>151</width>
+     <width>141</width>
      <height>31</height>
     </rect>
    </property>
@@ -245,6 +245,45 @@
    </property>
    <property name="text">
     <string>LOGOUT</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="start_net_scan_button">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>START SCNNING</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="stop_net_scan_button">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>10</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>STOP SCANNING</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="clear_san_table_button">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>10</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>CLEAR TABLE</string>
    </property>
   </widget>
  </widget>
