@@ -16,7 +16,7 @@
   <widget class="QLineEdit" name="password">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>430</x>
      <y>230</y>
      <width>231</width>
      <height>31</height>
@@ -26,7 +26,7 @@
   <widget class="QLineEdit" name="username">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>430</x>
      <y>170</y>
      <width>231</width>
      <height>31</height>
@@ -36,7 +36,7 @@
   <widget class="QPushButton" name="loginbutton">
    <property name="geometry">
     <rect>
-     <x>560</x>
+     <x>570</x>
      <y>310</y>
      <width>91</width>
      <height>31</height>
@@ -54,7 +54,7 @@
     <rect>
      <x>320</x>
      <y>160</y>
-     <width>91</width>
+     <width>101</width>
      <height>41</height>
     </rect>
    </property>
@@ -62,7 +62,7 @@
     <string notr="true">font-size: 15pt;</string>
    </property>
    <property name="text">
-    <string>Username</string>
+    <string>Username:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -78,7 +78,7 @@
     <string notr="true">font-size: 15pt;</string>
    </property>
    <property name="text">
-    <string>Password</string>
+    <string>Password:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">

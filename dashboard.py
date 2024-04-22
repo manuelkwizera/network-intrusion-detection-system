@@ -38,7 +38,7 @@ class Dashboard(QDialog):
         self.tableWidget.setRowCount(0)
 
     def get_ip_geolocator(self):
-        ip_geolocator = IPGeolocator(self.widget)
+        ip_geolocator = IPGeolocator(self)
         ip_geolocator.get_ip_info()
         
     def show_network_scanner(self):

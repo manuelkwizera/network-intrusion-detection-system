@@ -11,11 +11,11 @@ It stores an impressive database of IP addresses obtained from Internet service 
 """
 
 class IPGeolocator(QDialog):
-    def __init__(self, widget):
+    def __init__(self, parent):
         super().__init__()
-        self.widget = widget
-        self.get_ip_info_button = widget.get_ip_info_button  # Assuming this is how you access the button
-        self.ip_address = widget.ip_address_input  # Assuming this is how you access the IP address input field
+        self.parent = parent
+        self.get_ip_info_button = parent.get_ip_info_button  
+        self.ip_address = parent.ip_address_input 
         
     def get_ip_info(self):
         ip_address = self.ip_address.text()
