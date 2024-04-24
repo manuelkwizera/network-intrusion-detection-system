@@ -5,6 +5,7 @@ from packet_sniffer import PacketSniffer
 import scapy.all as scp
 from ip_geolocator import IPGeolocator
 from network_scanner import NetworkScanner
+from report import Report
 
 class Dashboard(QDialog):
     def __init__(self, widget):
@@ -17,6 +18,9 @@ class Dashboard(QDialog):
         self.sniffer = None  # Initialize sniffer as None
         self.get_ip_info_button.clicked.connect(self.get_ip_geolocator)
         self.network_scanner_button.clicked.connect(self.show_network_scanner)
+        
+        #load report view
+        self.report_button.clicked.connect(self.show_report_view)
 
     #start packet sniffing
     def start_sniff(self):
@@ -46,6 +50,11 @@ class Dashboard(QDialog):
         dashboard = Dashboard(self.widget)
         network_scanner = NetworkScanner(target_ip, self.widget, dashboard)
         self.widget.addWidget(network_scanner)
+        self.widget.setCurrentIndex(self.widget.currentIndex() + 1)
+    
+    def show_report_view(self):
+        report = Report(self.widget)
+        self.widget.addWidget(report)
         self.widget.setCurrentIndex(self.widget.currentIndex() + 1)
         
 

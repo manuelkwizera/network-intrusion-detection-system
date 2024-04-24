@@ -26,3 +26,11 @@ class DatabaseConnector:
     def close_connection(self):
         self.cursor.close()
         self.connection.close()
+    
+    def fetch_report_data(self):
+        query = "SELECT * FROM intrusion_events"
+        self.cursor.execute(query)
+        data = self.cursor.fetchall()
+        return data
+
+
