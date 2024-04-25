@@ -21,6 +21,9 @@ class Dashboard(QDialog):
         
         #load report view
         self.report_button.clicked.connect(self.show_report_view)
+        
+        #set col width of the ip geolocator table
+        self.ip_geolocation_table.setColumnWidth(0, 200) 
 
     #start packet sniffing
     def start_sniff(self):

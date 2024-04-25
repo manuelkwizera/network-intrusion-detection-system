@@ -105,113 +105,13 @@
     <string>INTRUSION EVENTS</string>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="frame_2">
    <property name="geometry">
     <rect>
      <x>640</x>
      <y>100</y>
      <width>331</width>
-     <height>201</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>261</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 15pt;</string>
-    </property>
-    <property name="text">
-     <string>CHECK PORT DIALOG</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="loginbutton">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>160</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>SCAN</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="email">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>60</y>
-      <width>231</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="password">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>110</y>
-      <width>231</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>71</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 12pt;</string>
-    </property>
-    <property name="text">
-     <string>IP:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>61</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 12pt;</string>
-    </property>
-    <property name="text">
-     <string>PORT:</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QFrame" name="frame_2">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>330</y>
-     <width>331</width>
-     <height>151</height>
+     <height>491</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -277,6 +177,56 @@
     <property name="text">
      <string>IP:</string>
     </property>
+   </widget>
+   <widget class="QTableWidget" name="ip_geolocation_table">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>311</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <row>
+     <property name="text">
+      <string>COUNTRY CODE:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>COUNTRY NAME:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>CITY:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>IPV4:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>LATITUDE:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>LONGTITUDE:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>STATE:</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Value</string>
+     </property>
+    </column>
    </widget>
   </widget>
   <widget class="QPushButton" name="clear_table_button">
