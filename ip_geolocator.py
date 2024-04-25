@@ -47,7 +47,6 @@ class IPGeolocator(QDialog):
         self.parent.ip_geolocation_table.setItem(row_index, self.IPV4_COLUMN, QTableWidgetItem(result['IPv4']))
         self.parent.ip_geolocation_table.setItem(row_index, self.STATE_COLUMN, QTableWidgetItem(result['state']))       
 
-
         # Format geolocation data into a string
         formatted_info = ""
         for key, value in result.items():
