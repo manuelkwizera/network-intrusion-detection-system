@@ -2,16 +2,17 @@ from scapy.all import Ether, ARP, srp, sniff, conf
 import threading
 from time import sleep
 
-
-terminate_sniffing = False #track thread status
-
+class ArpSpoofDetector:
+    def __init__(self):
+        self.terminate_sniffing = False #for tracking thread status
+         
 
 """
 This function will make an ARP request
 and retrieves the real MAC address the that IP address
 """
 
-def get_mac(ip):
+def get_mac(self, ip):
     """
     Returns the MAC address of `ip`, if it is unable to find it
     for some reason, throws `IndexError`
@@ -27,9 +28,8 @@ ARP replies, and then compares between the real MAC address and the
 response MAC address (that's sent in the packet itself).
 """
 
-def process(packet):
-    global terminate_sniffing
-    if terminate_sniffing:
+def process(self, packet):
+    if self.terminate_sniffing:
         return  # If termination flag is set, stop processing packets
     
     # if the packet is an ARP packet
@@ -56,12 +56,20 @@ def process(packet):
 The sniff function from Scapy is used for packet sniffing, 
 allowing you to capture and process network packets in real-time
 """
-def start_sniffing():
+def start_sniffing(self):
     #prn: This argument specifies a callback function to be called for each packet sniffed. 
     #prn: This function is called with the packet as its argument.
     #store: This argument specifies whether to store the packets in memory or not
     sniff(timeout=60, store=False, prn=process)
+
+#running sniffing thread at the background
+def start(self):
+    self.sniff_thread.start()
+
+def stop():
     
+
+
 # Start sniffing in a separate thread
 sniff_thread = threading.Thread(target=start_sniffing)
 sniff_thread.start()
