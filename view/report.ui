@@ -24,7 +24,7 @@
    </property>
    <column>
     <property name="text">
-     <string>IP ADDRESS</string>
+     <string>MAC ADDRESS</string>
     </property>
     <property name="font">
      <font>
