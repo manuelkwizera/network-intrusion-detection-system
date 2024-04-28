@@ -91,10 +91,9 @@ class ArpSpoofDetector:
         # If the MAC address is not found in the ARP table
         return None
 
-    #def 
-
-        
-
+    def log_arp_spoofing_attempt(self, mac_addres):
+        print(mac_addres)
+         
 
 arp_spoof_detector = ArpSpoofDetector()
 arp_spoof_detector.start()
