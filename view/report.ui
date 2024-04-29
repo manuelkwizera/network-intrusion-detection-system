@@ -273,7 +273,7 @@
     <string>LOGOUT</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="go_to_dashboard_button">
    <property name="geometry">
     <rect>
      <x>830</x>

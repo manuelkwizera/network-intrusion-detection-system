@@ -12,6 +12,9 @@ class Report(QDialog):
         loadUi("view/report.ui", self)
         self.widget = widget
         self.database_connector = DatabaseConnector()
+
+        from dashboard import Dashboard
+        self.dashboard = Dashboard()
         
         #set column width
         self.tableWidget.setColumnWidth(0, 190)
@@ -25,7 +28,11 @@ class Report(QDialog):
         #laod report data into the table
         self.load_data_button.clicked.connect(self.show_report_data)
         
+        #holds the report data from the database
         self.data = [] 
+        
+        # redirect to dashboad when go to dashboard button is clicked
+        self.go_to_dashboard_button.clicked.connect(self.show_dashbaord)
 
     def show_report_data(self):
         database_connector = DatabaseConnector()
@@ -57,6 +64,9 @@ class Report(QDialog):
             # Set the widget as the cell widget for the desired column
             self.tableWidget.setCellWidget(row_position, 7, button_widget)
 
-
+    # load dashboard widget
+    def show_dashbaord(self):
+        self.widget.addWidget(self.dashboard)
+        self.widget.setCurrentIndex(self.widget.currentIndex() + 1)
 
            
